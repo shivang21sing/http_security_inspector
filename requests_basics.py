@@ -26,6 +26,7 @@ def analyse_headers(headers):
         
 
 if __name__ == "__main__":
+    #implemented argparse for Command-Line input of the desired URL
     parser = argparse.ArgumentParser(description= "HTTP Security Inspector tool")
     parser.add_argument("url", help = "Target URL to inspect")
     args = parser.parse_args()
