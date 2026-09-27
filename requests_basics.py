@@ -1,8 +1,7 @@
 import requests
+import argparse
 #Importing exceptions module
 from requests.exceptions import RequestException
-
-url = "https://github.com"
 
 #Function for fetching headers
 def fetch_headers(url):
@@ -27,7 +26,10 @@ def analyse_headers(headers):
         
 
 if __name__ == "__main__":
-    target = url
+    parser = argparse.ArgumentParser(description= "HTTP Security Inspector tool")
+    parser.add_argument("url", help = "Target URL to inspect")
+    args = parser.parse_args()
+    target = args.url
     print(f"Target: {target}\n")
 
     status_code, headers, error = fetch_headers(target)
@@ -43,7 +45,7 @@ if __name__ == "__main__":
             if is_present:
                 print(f"[FOUND] {header}")
             else:
-                print(f"[MISSINg] {header}")
+                print(f"[MISSING] {header}")
 
 
 
